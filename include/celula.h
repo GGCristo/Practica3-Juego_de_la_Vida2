@@ -20,10 +20,30 @@ public:
   void set_i (int pos) {i_ = pos;}
   void set_j (int pos) {j_ = pos;}
   void set_Estado(bool);
-  void guardar_vecinos(const Tablero&);
-  void actualizar();
-  std::ostream& write(std::ostream&) const;
+  static Celula* createCelula (int, int, int);
+  virtual void contarVecinas(const Tablero&);
+  virtual int actualizarEstado(); // Reglas de nacimiento
+  virtual std::ostream& mostrar(std::ostream&) const;
   
 };
+
+class Celula1: public Celula {
+  public:
+    int actualizarEstado() {return 1;} //Reglas de nacimiento
+    std::ostream& mostrar(std::ostream&) const;
+};
+
+class Celula2: public Celula {
+  public:
+    int actualizarEstado() {return 2;} //Reglas de nacimiento
+    std::ostream& mostrar(std::ostream&) const;
+};
+
+class Celula3: public Celula {
+  public:
+    int actualizarEstado() {return 3;} //Reglas de nacimiento
+    std::ostream& mostrar(std::ostream&) const;
+};
+
 std::ostream& operator << (std::ostream&, const Celula&);
 #endif

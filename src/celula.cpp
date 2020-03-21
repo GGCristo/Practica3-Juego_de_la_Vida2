@@ -24,6 +24,25 @@ Celula::Celula(const Celula& celula2)
   vecinos_ = celula2.vecinos_;
 }
 
+Celula* Celula::createCelula(int tipo_, int i_, int j_)
+{
+  switch(tipo_)
+  {
+    case 0:
+      Celula(i_, j_);
+      break;
+    case 1:
+      Celula1(i_, j_);
+      break;
+    case 2:
+      Celula(i_, j_);
+      break;
+    case 3:
+      Celula(i_, j_);
+      break;
+  }
+}
+
 Celula::~Celula()
 {
 }
@@ -43,7 +62,7 @@ void Celula::set_Estado(bool valor)
   Estado_ = valor;
 }
 
-void Celula::guardar_vecinos(const Tablero& Tablero_)
+void Celula::contarVecinas(const Tablero& Tablero_)
 {
   vecinos_ = 0;
   if (Tablero_.get_celula(i_ - 1, j_ - 1).get_Estado())
@@ -80,7 +99,7 @@ void Celula::guardar_vecinos(const Tablero& Tablero_)
   }
 }
 
-void Celula::actualizar()
+int Celula::actualizarEstado()
 {
   if ((!Estado_ && vecinos_ == 3) || (Estado_ && (vecinos_ == 2 || vecinos_ == 3)))
     Estado_ = true;
@@ -88,7 +107,7 @@ void Celula::actualizar()
     Estado_ = false;
 }
 
-std::ostream& Celula::write(std::ostream& os) const
+std::ostream& Celula::mostrar(std::ostream& os) const
 {
   if (Estado_ == true)
     os << "x";
@@ -99,6 +118,6 @@ std::ostream& Celula::write(std::ostream& os) const
 
 std::ostream& operator << (std::ostream& os, const Celula& celula)
 {
-  celula.write(os);
+  celula.mostrar(os);
   return os;
 }

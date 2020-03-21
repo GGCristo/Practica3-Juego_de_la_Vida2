@@ -1,3 +1,4 @@
 *.o
 bin/
+Session.vim
 .DS_Store

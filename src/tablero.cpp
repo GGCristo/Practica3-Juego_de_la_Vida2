@@ -6,10 +6,10 @@ Tablero::Tablero(unsigned int n, unsigned int m)
   n_ = n - 2;
   m_ = m - 2;
   Tablero_ = new Celula*[n];
-  for (int i = 0; i < n; i++)
+  for (unsigned int i = 0; i < n; i++)
   {
     Tablero_[i] = new Celula[m];
-    for (int j = 0; j < m; j++)
+    for (unsigned int j = 0; j < m; j++)
     {
       Tablero_[i][j].set_i(i);
       Tablero_[i][j].set_j(j);
@@ -22,10 +22,10 @@ Tablero::Tablero(const Tablero& oTablero)
   n_ = oTablero.n_;
   m_ = oTablero.m_;
   Tablero_ = new Celula*[n_ + 2];
-  for (int i = 0; i < n_ + 2; i++)
+  for (unsigned int i = 0; i < n_ + 2; i++)
   {
     Tablero_[i] = new Celula[m_ + 2];
-    for (int j = 0; j < m_ + 2; j++)
+    for (unsigned int j = 0; j < m_ + 2; j++)
     {
       Tablero_[i][j].set_i(i);
       Tablero_[i][j].set_j(j);
@@ -56,19 +56,19 @@ Celula** Tablero::get_tablero() const
 
 void Tablero::actualizar()
 {
-  for (int i = 1; i <= n_; i++)
+  for (unsigned int i = 1; i <= n_; i++)
   {
-    for (int j = 1; j <= m_ ; j++)
+    for (unsigned int j = 1; j <= m_ ; j++)
     {
-      Tablero_[i][j].guardar_vecinos(*this);
+      Tablero_[i][j].contarVecinas(*this);
     }
   }
 
-  for (int i = 1; i <= n_; i++)
+  for (unsigned int i = 1; i <= n_; i++)
   {
-    for (int j = 1; j <= m_ ; j++)
+    for (unsigned int j = 1; j <= m_ ; j++)
     {
-      Tablero_[i][j].actualizar ();
+      Tablero_[i][j].actualizarEstado ();
     }
   }
 }
@@ -85,22 +85,22 @@ Celula& Tablero::get_celula (unsigned int n, unsigned int m) const
 
 std::ostream& Tablero::write(std::ostream& os) const
 {
-  for (int k = 0; k < m_; k++)
+  for (unsigned int k = 0; k < m_; k++)
   {
     os << " -";
   }
   os << "\n";
 
-  for (int i = 1; i <= n_; i++)
+  for (unsigned int i = 1; i <= n_; i++)
   {
-    for (int j = 1; j <= m_; j++)
+    for (unsigned int j = 1; j <= m_; j++)
     {
       os << "|" << Tablero_[i][j];
     }
     
     os << "|\n";
     
-    for (int k = 0; k < m_; k++)
+    for (unsigned int k = 0; k < m_; k++)
     {
       os << " -";
     }
@@ -113,7 +113,7 @@ std::ostream& Tablero::write(std::ostream& os) const
 
 void Tablero::destruir_tablero()
 {
-  for (int i = 0; i < n_ + 2; ++i)
+  for (unsigned int i = 0; i < n_ + 2; ++i)
     delete [] Tablero_[i];
   delete [] Tablero_;
 

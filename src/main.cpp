@@ -15,7 +15,6 @@ int main (){
   std::cout << "Numero de columnas: " << "\n";
   unsigned int y;
   std::cin >> y;
-
   std::cout << "¿Cuantas celulas vas a meter?" << "\n";
   unsigned int n_celulas;
   std::cin >> n_celulas;
@@ -24,7 +23,7 @@ int main (){
 
   Tablero Tablero0(x + 2, y + 2);
 
-  for (int i = 0; i < n_celulas; i++)
+  for (unsigned int i = 0; i < n_celulas; i++)
   {
     std::cout << "Celula número: " << i+1 << "\n";
     std::cout << "¿Valor de la fila?" << "\n";
@@ -61,7 +60,7 @@ int main (){
 
 void El_juego_de_la_vida (Tablero& Tablero0, const unsigned int &n_turnos)
 {
-  for (int i = 0; i < n_turnos; i++)
+  for (unsigned int i = 0; i < n_turnos; i++)
   {
     Tablero0.actualizar();
     std::cout << "Turno " << i + 1 << ": " << "\n";
