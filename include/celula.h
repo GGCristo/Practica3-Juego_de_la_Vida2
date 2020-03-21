@@ -2,17 +2,19 @@
 #ifndef Celul
 #define Celul
 #include <iostream>
+#include <cassert>
 #include "tablero.h"
 class Tablero;
 class Celula {
-private:
+protected:
   bool Estado_;
   unsigned int i_;
   unsigned int j_;
   unsigned int vecinos_;
+  unsigned int tipo_;
 public:
   Celula();
-  Celula(unsigned int, unsigned int);
+  Celula(unsigned int, unsigned int, unsigned int = 0);
   Celula(const Celula&);
   ~Celula();
   bool get_Estado() const;
@@ -20,7 +22,7 @@ public:
   void set_i (int pos) {i_ = pos;}
   void set_j (int pos) {j_ = pos;}
   void set_Estado(bool);
-  static Celula* createCelula (int, int, int);
+  static Celula* createCelula (unsigned int,unsigned int,unsigned int);
   virtual void contarVecinas(const Tablero&);
   virtual int actualizarEstado(); // Reglas de nacimiento
   virtual std::ostream& mostrar(std::ostream&) const;

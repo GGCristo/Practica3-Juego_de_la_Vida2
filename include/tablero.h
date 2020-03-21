@@ -6,7 +6,7 @@
 class Celula;
 class Tablero {
   private:
-    Celula** Tablero_;
+    Celula*** Tablero_;
     // Tamaño falso del tablero
     unsigned int n_;
     unsigned int m_;
@@ -15,8 +15,8 @@ class Tablero {
     Tablero(const Tablero&);
     unsigned int get_n();
     unsigned int get_m();
-    Celula** get_tablero();
-    Celula** get_tablero() const;
+    Celula*** get_tablero();
+    Celula*** get_tablero() const;
     void actualizar();
     Celula& get_celula (unsigned int, unsigned int);
     Celula& get_celula (unsigned int, unsigned int) const;

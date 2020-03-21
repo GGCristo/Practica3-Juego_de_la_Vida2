@@ -5,14 +5,15 @@ Tablero::Tablero(unsigned int n, unsigned int m)
 {
   n_ = n - 2;
   m_ = m - 2;
-  Tablero_ = new Celula*[n];
+  Tablero_ = new Celula**[n];
   for (unsigned int i = 0; i < n; i++)
   {
-    Tablero_[i] = new Celula[m];
+    Tablero_[i] = new Celula*[m];
     for (unsigned int j = 0; j < m; j++)
     {
-      Tablero_[i][j].set_i(i);
-      Tablero_[i][j].set_j(j);
+      Tablero_[i][j] = Celula::createCelula(0, i, j);
+      // Tablero_[i][j] -> set_i(i);
+      // Tablero_[i][j] -> set_j(j);
     }
   }
 }
@@ -21,15 +22,14 @@ Tablero::Tablero(const Tablero& oTablero)
   this -> destruir_tablero();
   n_ = oTablero.n_;
   m_ = oTablero.m_;
-  Tablero_ = new Celula*[n_ + 2];
+  Tablero_ = new Celula**[n_ + 2];
   for (unsigned int i = 0; i < n_ + 2; i++)
   {
-    Tablero_[i] = new Celula[m_ + 2];
+    Tablero_[i] = new Celula*[m_ + 2];
     for (unsigned int j = 0; j < m_ + 2; j++)
     {
-      Tablero_[i][j].set_i(i);
-      Tablero_[i][j].set_j(j);
-      Tablero_[i][j].set_Estado(oTablero.Tablero_[i][j].get_Estado());
+      // Tablero_[i][j] = Celula::createCelula(oTablero.Tablero_[i][j] -> tipo_, i, j);
+      Tablero_[i][j] -> set_Estado(oTablero.Tablero_[i][j] -> get_Estado());
     }
   }
 }
@@ -44,12 +44,12 @@ unsigned int Tablero::get_m()
   return m_;
 }
 
-Celula** Tablero::get_tablero()
+Celula*** Tablero::get_tablero()
  {
    return Tablero_;
  }
 
-Celula** Tablero::get_tablero() const
+Celula*** Tablero::get_tablero() const
 {
   return Tablero_;
 }
@@ -60,7 +60,7 @@ void Tablero::actualizar()
   {
     for (unsigned int j = 1; j <= m_ ; j++)
     {
-      Tablero_[i][j].contarVecinas(*this);
+      Tablero_[i][j] -> contarVecinas(*this);
     }
   }
 
@@ -68,19 +68,19 @@ void Tablero::actualizar()
   {
     for (unsigned int j = 1; j <= m_ ; j++)
     {
-      Tablero_[i][j].actualizarEstado ();
+      Tablero_[i][j] -> actualizarEstado ();
     }
   }
 }
 
 Celula& Tablero::get_celula (unsigned int n, unsigned int m)
 {
-  return Tablero_[n][m];
+  return *Tablero_[n][m];
 }
 
 Celula& Tablero::get_celula (unsigned int n, unsigned int m) const
 {
-  return Tablero_[n][m];
+  return *Tablero_[n][m];
 }
 
 std::ostream& Tablero::write(std::ostream& os) const
@@ -95,7 +95,7 @@ std::ostream& Tablero::write(std::ostream& os) const
   {
     for (unsigned int j = 1; j <= m_; j++)
     {
-      os << "|" << Tablero_[i][j];
+      os << "|" << *Tablero_[i][j];
     }
     
     os << "|\n";

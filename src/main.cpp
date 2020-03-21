@@ -22,6 +22,7 @@ int main (){
   assert(x*y >= n_celulas);
 
   Tablero Tablero0(x + 2, y + 2);
+  
 
   for (unsigned int i = 0; i < n_celulas; i++)
   {
