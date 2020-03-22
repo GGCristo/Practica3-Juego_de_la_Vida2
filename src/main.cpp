@@ -5,7 +5,6 @@
 void El_juego_de_la_vida(Tablero&, const unsigned int&);
 
 int main (){
-  
   std::cout << "Juego de la vida: " << std::endl;
 
   std::cout << "Numero de filas: " << "\n";
@@ -49,6 +48,7 @@ int main (){
         }
         delete Tablero0.get_tablero()[x][y];
         Tablero0.get_tablero()[x][y] = Celula::createCelula(tipo, x, y);
+        Tablero0.get_tablero()[x][y] -> set_tipo(tipo); 
       }
   }
 

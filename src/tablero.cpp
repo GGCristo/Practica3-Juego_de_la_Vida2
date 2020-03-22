@@ -96,7 +96,7 @@ std::ostream& Tablero::write(std::ostream& os) const
   {
     for (unsigned int j = 1; j <= m_; j++)
     {
-      os << "|" << *Tablero_[i][j];
+      os << "|" << Tablero_[i][j];
     }
     
     os << "|\n";

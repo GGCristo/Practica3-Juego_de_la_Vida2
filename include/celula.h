@@ -30,21 +30,24 @@ public:
 
 class Celula1: public Celula {
   public:
+    Celula1(unsigned int i_, unsigned int j_, unsigned int tipo = 0): Celula(i_,j_, tipo) {}
     int actualizarEstado();  //Reglas de nacimiento;
     std::ostream& mostrar(std::ostream&) const;
 };
 
 class Celula2: public Celula {
   public:
+    Celula2(unsigned int i_, unsigned int j_, unsigned int tipo = 0): Celula(i_,j_, tipo) {}
     int actualizarEstado();  //Reglas de nacimiento
     std::ostream& mostrar(std::ostream&) const;
 };
 
 class Celula3: public Celula {
   public:
+    Celula3(unsigned int i_, unsigned int j_, unsigned int tipo = 0): Celula(i_,j_, tipo) {}
     int actualizarEstado(); //Reglas de nacimiento
     std::ostream& mostrar(std::ostream&) const;
 };
 
-std::ostream& operator << (std::ostream&, const Celula&);
+std::ostream& operator << (std::ostream&, const Celula*);
 #endif

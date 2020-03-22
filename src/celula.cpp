@@ -31,11 +31,11 @@ Celula* Celula::createCelula(unsigned int tipo, unsigned int i_, unsigned int j_
     case 0:
       return new Celula(i_, j_);
     case 1:
-      return new Celula1::Celula(i_, j_, 1);
+      return new Celula1(i_, j_, 1);
     case 2:
-      return new Celula2::Celula(i_, j_, 2);
+      return new Celula2(i_, j_, 2);
     case 3:
-      return new Celula3::Celula(i_, j_, 3);
+      return new Celula3(i_, j_, 3);
     default:
       std::cout << "Se pasó un tipo de celula no programada" << "\n";
       std::cout << tipo << "\n";
@@ -96,8 +96,10 @@ int Celula::actualizarEstado()
     return 1;
   else if (vecinos_ == 6 || vecinos_ == 8) 
     return 2;
-  else 
+  else if (vecinos_ == 4)
     return 3;
+  else 
+    return 0;
 }
 
 int Celula1::actualizarEstado()
@@ -110,7 +112,7 @@ int Celula1::actualizarEstado()
 
 int Celula2::actualizarEstado()
 {
-  if (vecinos_ == 3 || vecinos_ == 6 || vecinos_ == 8)
+  if (vecinos_ == 2 || vecinos_ == 4 || vecinos_ == 5)
     return 2;
   else 
     return 0;
@@ -118,7 +120,7 @@ int Celula2::actualizarEstado()
 
 int Celula3::actualizarEstado()
 {
-  if (vecinos_ == 3 || vecinos_ == 4 || vecinos_ == 6)
+  if (vecinos_ == 5 || vecinos_ == 1)
     return 3;
   else 
     return 0;
@@ -148,8 +150,8 @@ std::ostream& Celula3::mostrar(std::ostream& os) const
   return os;
 }
 
-std::ostream& operator << (std::ostream& os, const Celula& celula)
+std::ostream& operator << (std::ostream& os, const Celula* celula)
 {
-  celula.mostrar(os);
+  celula -> mostrar(os);
   return os;
 }
