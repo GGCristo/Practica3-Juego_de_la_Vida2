@@ -12,8 +12,6 @@ Tablero::Tablero(unsigned int n, unsigned int m)
     for (unsigned int j = 0; j < m; j++)
     {
       Tablero_[i][j] = Celula::createCelula(0, i, j);
-      // Tablero_[i][j] -> set_i(i);
-      // Tablero_[i][j] -> set_j(j);
     }
   }
 }
@@ -29,7 +27,7 @@ Tablero::Tablero(const Tablero& oTablero)
     for (unsigned int j = 0; j < m_ + 2; j++)
     {
       // Tablero_[i][j] = Celula::createCelula(oTablero.Tablero_[i][j] -> tipo_, i, j);
-      Tablero_[i][j] -> set_Estado(oTablero.Tablero_[i][j] -> get_Estado());
+      Tablero_[i][j] -> set_tipo(oTablero.Tablero_[i][j] -> get_tipo());
     }
   }
 }
@@ -68,7 +66,10 @@ void Tablero::actualizar()
   {
     for (unsigned int j = 1; j <= m_ ; j++)
     {
-      Tablero_[i][j] -> actualizarEstado ();
+      unsigned int tipo = Tablero_[i][j] -> actualizarEstado();
+      delete Tablero_[i][j];
+      Tablero_[i][j] = Celula::createCelula(tipo, i, j); 
+      Tablero_[i][j] -> set_tipo(tipo);
     }
   }
 }

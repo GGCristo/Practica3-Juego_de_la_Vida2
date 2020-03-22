@@ -7,7 +7,6 @@
 class Tablero;
 class Celula {
 protected:
-  bool Estado_;
   unsigned int i_;
   unsigned int j_;
   unsigned int vecinos_;
@@ -17,11 +16,11 @@ public:
   Celula(unsigned int, unsigned int, unsigned int = 0);
   Celula(const Celula&);
   ~Celula();
-  bool get_Estado() const;
   unsigned int get_vecinos() const;
   void set_i (int pos) {i_ = pos;}
   void set_j (int pos) {j_ = pos;}
-  void set_Estado(bool);
+  void set_tipo (unsigned int tipo) {tipo_ = tipo;}
+  unsigned int get_tipo() {return tipo_;}
   static Celula* createCelula (unsigned int,unsigned int,unsigned int);
   virtual void contarVecinas(const Tablero&);
   virtual int actualizarEstado(); // Reglas de nacimiento
@@ -31,19 +30,19 @@ public:
 
 class Celula1: public Celula {
   public:
-    int actualizarEstado() {return 1;} //Reglas de nacimiento
+    int actualizarEstado();  //Reglas de nacimiento;
     std::ostream& mostrar(std::ostream&) const;
 };
 
 class Celula2: public Celula {
   public:
-    int actualizarEstado() {return 2;} //Reglas de nacimiento
+    int actualizarEstado();  //Reglas de nacimiento
     std::ostream& mostrar(std::ostream&) const;
 };
 
 class Celula3: public Celula {
   public:
-    int actualizarEstado() {return 3;} //Reglas de nacimiento
+    int actualizarEstado(); //Reglas de nacimiento
     std::ostream& mostrar(std::ostream&) const;
 };
 
