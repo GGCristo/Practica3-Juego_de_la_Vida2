@@ -14,11 +14,6 @@ int main (){
   std::cout << "Numero de columnas: " << "\n";
   unsigned int y;
   std::cin >> y;
-  std::cout << "¿Cuantas celulas vas a meter?" << "\n";
-  unsigned int n_celulas;
-  std::cin >> n_celulas;
-  
-  assert(x*y >= n_celulas);
 
   Tablero Tablero0(x + 2, y + 2);
   

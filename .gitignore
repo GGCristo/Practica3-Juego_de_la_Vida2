@@ -1,4 +1,7 @@
 *.o
 bin/
+.vimspector.json
+.vscode
+catch.hpp
 Session.vim
 .DS_Store

@@ -114,9 +114,15 @@ std::ostream& Tablero::write(std::ostream& os) const
 
 void Tablero::destruir_tablero()
 {
-  for (unsigned int i = 0; i < n_ + 2; ++i)
-    delete [] Tablero_[i];
-  delete [] Tablero_;
+  for (int i = 0; i < n_ + 2; i++)
+  {
+    for (int j = 0; j < m_ +2; j++)
+    {
+      delete Tablero_[i][j];
+    }
+    delete[] Tablero_[i];
+  }
+  delete[] Tablero_;
 
   n_ = 0;
   m_ = 0;
