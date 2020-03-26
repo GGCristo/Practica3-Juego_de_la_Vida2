@@ -56,15 +56,7 @@ unsigned int Celula::get_vecinos() const
 void Celula::contarVecinas(const Tablero& Tablero_)
 {
   vecinos_ = 0;
-  if (Tablero_.get_celula(i_ - 1, j_ - 1).get_tipo() != 0)
-  {
-    vecinos_++; 
-  }
   if (Tablero_.get_celula(i_ - 1, j_).get_tipo() != 0)
-  {
-    vecinos_++; 
-  }
-  if (Tablero_.get_celula(i_ - 1, j_+ 1).get_tipo() != 0)
   {
     vecinos_++; 
   }
@@ -76,15 +68,7 @@ void Celula::contarVecinas(const Tablero& Tablero_)
   {
     vecinos_++; 
   }
-  if (Tablero_.get_celula(i_+ 1, j_- 1).get_tipo() != 0)
-  {
-    vecinos_++; 
-  }
   if (Tablero_.get_celula(i_ + 1,  j_).get_tipo() != 0)
-  {
-    vecinos_++; 
-  }
-  if (Tablero_.get_celula(i_ + 1, j_ + 1).get_tipo() != 0)
   {
     vecinos_++; 
   }

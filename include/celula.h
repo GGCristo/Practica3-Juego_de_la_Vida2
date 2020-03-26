@@ -21,7 +21,7 @@ public:
   void set_j (int pos) {j_ = pos;}
   void set_tipo (unsigned int tipo) {tipo_ = tipo;}
   unsigned int get_tipo() {return tipo_;}
-  static Celula* createCelula (unsigned int,unsigned int,unsigned int);
+  static Celula* createCelula (unsigned int, unsigned int, unsigned int);
   virtual void contarVecinas(const Tablero&);
   virtual int actualizarEstado(); // Reglas de nacimiento
   virtual std::ostream& mostrar(std::ostream&) const;
@@ -30,7 +30,7 @@ public:
 
 class Celula1: public Celula {
   public:
-    Celula1(unsigned int i_, unsigned int j_, unsigned int tipo = 0): Celula(i_,j_, tipo) {}
+    Celula1(unsigned int i_, unsigned int j_, unsigned int tipo = 0): Celula(i_, j_, tipo) {}
     int actualizarEstado();  //Reglas de nacimiento;
     std::ostream& mostrar(std::ostream&) const;
 };
