@@ -16,7 +16,7 @@ class Tablero {
     unsigned int get_n();
     unsigned int get_m();
     Celula*** get_tablero();
-    Celula*** get_tablero() const;
+    Celula*** get_tablero() const; //Pruebaza funciona?
     void actualizar();
     Celula& get_celula (unsigned int, unsigned int);
     Celula& get_celula (unsigned int, unsigned int) const;

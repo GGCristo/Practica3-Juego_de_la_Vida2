@@ -43,7 +43,7 @@ int main (){
         }
         delete Tablero0.get_tablero()[x][y];
         Tablero0.get_tablero()[x][y] = Celula::createCelula(tipo, x, y);
-        Tablero0.get_tablero()[x][y] -> set_tipo(tipo); 
+        Tablero0.get_tablero()[x][y] -> set_tipo(tipo);     
       }
   }
 
