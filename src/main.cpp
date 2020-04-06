@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include "../include/tablero.h"
+#include "../include/tablero.hpp"
 
 void El_juego_de_la_vida(Tablero&, const unsigned int&);
 

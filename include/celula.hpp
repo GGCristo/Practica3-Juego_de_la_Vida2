@@ -3,7 +3,7 @@
 #define Celul
 #include <iostream>
 #include <cassert>
-#include "tablero.h"
+#include "tablero.hpp"
 class Tablero;
 class Celula {
 protected:

@@ -1,5 +1,5 @@
 
-#include "../include/celula.h"
+#include "../include/celula.hpp"
 
 Celula::Celula ()
 {

@@ -2,7 +2,7 @@
 #ifndef Tab
 #define Tab
 #include <array>
-#include "celula.h"
+#include "celula.hpp"
 class Celula;
 class Tablero {
   private:

@@ -1,5 +1,5 @@
 #include <array>
-#include "../include/tablero.h"
+#include "../include/tablero.hpp"
 
 Tablero::Tablero(unsigned int n, unsigned int m)
 {
