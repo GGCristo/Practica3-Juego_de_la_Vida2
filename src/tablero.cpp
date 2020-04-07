@@ -68,7 +68,7 @@ void Tablero::actualizar()
     {
       unsigned int tipo = Tablero_[i][j] -> actualizarEstado();
       delete Tablero_[i][j];
-      Tablero_[i][j] = Celula::createCelula(tipo, i, j); 
+      Tablero_[i][j] = Celula::createCelula(tipo, i, j);
       Tablero_[i][j] -> set_tipo(tipo);
     }
   }

@@ -16,36 +16,35 @@ int main (){
   std::cin >> y;
 
   Tablero Tablero0(x + 2, y + 2);
-  
 
-    for (int tipo = 1; tipo <= 3; tipo++)
+  for (int tipo = 1; tipo <= 3; tipo++)
+  {
+    std::cout << "¿Cuantas celulas quieres del tipo " << tipo << "?\n";
+    unsigned int contador;
+    std::cin >> contador;
+    for (unsigned int i = 0; i < contador; i++)
     {
-      std::cout << "¿Cuantas celulas quieres del tipo " << tipo << "?\n";
-      unsigned int contador;
-      std::cin >> contador;
-      for (unsigned int i = 0; i < contador; i++)
+      std::cout << "¿Valor de la fila?" << "\n";
+      std::cin >> x;
+      if (x < 1 || x > Tablero0.get_n())
       {
-        std::cout << "¿Valor de la fila?" << "\n";
-        std::cin >> x;
-        if (x < 1 || x > Tablero0.get_n())
-        {
-          i--;
-          std::cout << "Eso esta fuera de los límites. Intentelo otra vez\n";
-          continue;
-        }
-        std::cout << "¿Valor de la columna?" << "\n";
-        std::cin >> y;
-        if (y < 1 || y > Tablero0.get_m())
-        {
-          i--;
-          std::cout << "Eso esta fuera de los límites. Intentelo otra vez\n";
-          continue;
-        }
-        delete Tablero0.get_tablero()[x][y];
-        Tablero0.get_tablero()[x][y] = Celula::createCelula(tipo, x, y);
-        Tablero0.get_tablero()[x][y] -> set_tipo(tipo);     
+        i--;
+        std::cout << "Eso esta fuera de los límites. Intentelo otra vez\n";
+        continue;
       }
-  }
+      std::cout << "¿Valor de la columna?" << "\n";
+      std::cin >> y;
+      if (y < 1 || y > Tablero0.get_m())
+      {
+        i--;
+        std::cout << "Eso esta fuera de los límites. Intentelo otra vez\n";
+        continue;
+      }
+      delete Tablero0.get_tablero()[x][y];
+      Tablero0.get_tablero()[x][y] = Celula::createCelula(tipo, x, y);
+      Tablero0.get_tablero()[x][y] -> set_tipo(tipo);     
+    }
+}
 
   std::cout << "¿Numero de turnos?\n";
   unsigned int n_turnos;
